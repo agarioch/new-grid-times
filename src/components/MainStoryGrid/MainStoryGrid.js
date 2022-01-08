@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { COLORS, QUERIES } from '../../constants';
 
-import {
-  MAIN_STORY,
-  OPINION_STORIES,
-  SECONDARY_STORIES,
-} from '../../data';
+import { MAIN_STORY, OPINION_STORIES, SECONDARY_STORIES } from '../../data';
 
 import SectionTitle from '../SectionTitle';
 import MainStory from '../MainStory';
@@ -66,6 +63,24 @@ const SecondaryStorySection = styled.section`
 const StoryList = styled.div`
   display: flex;
   flex-direction: column;
+
+  & > a:not(:first-child)::before {
+    /* story divider */
+    content: '';
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border-top: 1px solid ${COLORS.gray[300]};
+    display: block;
+  }
+
+  & p {
+    /* limit article body to 3 lines */
+    white-space: pre-wrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow-y: hidden;
+  }
 `;
 
 const OpinionSection = styled.section`
