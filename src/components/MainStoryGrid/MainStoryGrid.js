@@ -27,11 +27,11 @@ const MainStoryGrid = () => {
 
       <OpinionSection>
         <SectionTitle>Opinion</SectionTitle>
-        <StoryList>
+        <OpinionList>
           {OPINION_STORIES.map((story, index) => (
             <OpinionStory key={story.id} {...story} />
           ))}
-        </StoryList>
+        </OpinionList>
       </OpinionSection>
 
       <AdvertisementSection>
@@ -59,19 +59,30 @@ const Wrapper = styled.div`
     gap: 32px;
   }
   @media ${QUERIES.laptopAndUp} {
-    grid-template-columns: 1fr min(380px, 30%) min(270px, 20%);
+    grid-template-columns: 1fr clamp(200px, 30%, 400px) max(140px, 20%, 280px);
     grid-template-areas:
       'main-story secondary-stories opinion-stories'
       'main-story advertisement advertisement';
+    gap: 32px;
   }
 `;
 
 const MainStorySection = styled.section`
   grid-area: main-story;
+  @media ${QUERIES.laptopAndUp} {
+    padding-right: 16px;
+    margin-right: -16px;
+    border-right: 1px solid var(--color-gray-300);
+  }
 `;
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
+  @media ${QUERIES.laptopAndUp} {
+    padding-right: 16px;
+    margin-right: -16px;
+    border-right: 1px solid var(--color-gray-300);
+  }
 `;
 
 const StoryList = styled.div`
@@ -97,12 +108,31 @@ const StoryList = styled.div`
   }
 `;
 
+const OpinionList = styled(StoryList)`
+  @media ${QUERIES.tabletOnly} {
+    flex-direction: row;
+    gap: 32px;
+    & > a {
+      flex: 1;
+    }
+    & > a:not(:first-child)::before {
+      border-top: none;
+      margin: 0;
+    }
+  }
+`;
+
 const OpinionSection = styled.section`
   grid-area: opinion-stories;
 `;
 
 const AdvertisementSection = styled.section`
   grid-area: advertisement;
+  @media ${QUERIES.laptopAndUp} {
+    border-top: 1px solid var(--color-gray-300);
+    padding-top: 16px;
+    margin-top: -8px;
+  }
 `;
 
 export default MainStoryGrid;

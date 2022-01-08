@@ -21,7 +21,6 @@ const Wrapper = styled.article`
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  margin-left: 16px;
   @media ${QUERIES.tabletOnly} {
     flex-direction: column;
   }
@@ -33,6 +32,10 @@ const Avatar = styled.img`
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
+  margin-left: 16px;
+  @media ${QUERIES.tabletOnly} {
+    margin-left: 0;
+  }
 `;
 
 const AuthorName = styled.p`
