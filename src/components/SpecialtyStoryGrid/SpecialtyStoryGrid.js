@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
+import { QUERIES } from '../../constants';
 import { MARKET_DATA, SPORTS_STORIES } from '../../data';
 
 import MarketCard from '../MarketCard';
@@ -34,11 +35,13 @@ const SpecialtyStoryGrid = () => {
         >
           Sports
         </SectionTitle>
-        <SportsStories>
-          {SPORTS_STORIES.map((data) => (
-            <MiniStory key={data.id} {...data} />
-          ))}
-        </SportsStories>
+        <SportsScroll>
+          <SportsStories>
+            {SPORTS_STORIES.map((data) => (
+              <MiniStory key={data.id} {...data} />
+            ))}
+          </SportsStories>
+        </SportsScroll>
       </SportsSection>
     </Wrapper>
   );
@@ -51,10 +54,33 @@ const Wrapper = styled.div`
 
 const MarketsSection = styled.section``;
 
-const MarketCards = styled.div``;
+const MarketCards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 16px;
+`;
 
-const SportsSection = styled.section``;
+const SportsSection = styled.section`
+  display: grid;
+`;
 
-const SportsStories = styled.div``;
+const SportsScroll = styled.div`
+  display: block;
+  overflow-x: auto;
+`;
+
+const SportsStories = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 16px;
+  @media ${QUERIES.tabletAndUp} {
+    display: flex;
+    & > a {
+      flex: 1;
+      min-width: 180px;
+      padding-bottom: 16px;
+    }
+  } ;
+`;
 
 export default SpecialtyStoryGrid;
