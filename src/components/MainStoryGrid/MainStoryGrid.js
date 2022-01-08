@@ -50,6 +50,20 @@ const Wrapper = styled.div`
     'advertisement';
   gap: 48px;
   margin-bottom: 48px;
+  @media ${QUERIES.tabletOnly} {
+    grid-template-columns: 1fr 280px;
+    grid-template-areas:
+      'main-story secondary-stories'
+      'advertisement advertisement'
+      'opinion-stories opinion-stories';
+    gap: 32px;
+  }
+  @media ${QUERIES.laptopAndUp} {
+    grid-template-columns: 1fr min(380px, 30%) min(270px, 20%);
+    grid-template-areas:
+      'main-story secondary-stories opinion-stories'
+      'main-story advertisement advertisement';
+  }
 `;
 
 const MainStorySection = styled.section`
