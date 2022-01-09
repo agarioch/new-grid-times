@@ -50,6 +50,9 @@ const SpecialtyStoryGrid = () => {
 const Wrapper = styled.div`
   display: grid;
   gap: 48px;
+  @media ${QUERIES.laptopAndUp} {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const MarketsSection = styled.section``;
